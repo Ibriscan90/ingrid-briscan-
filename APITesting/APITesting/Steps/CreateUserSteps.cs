@@ -1,6 +1,9 @@
 ﻿using APITesting.Models;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
+using NUnit.Framework;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +21,7 @@ namespace APITesting.Steps
         [Given(@"I populate the API call")]
         public void GivenIPopulateTheAPICall()
         {
-            createUserRequest = new CreateUserRequest { FirstName = "John", LastName = "Tom", Job = "QA" };
+            createUserRequest = new CreateUserRequest { FirstName = "Ingrid", LastName = "Briscan", Job = "QA", username = "Ingrid" };
         }
 
         [When(@"I make the API call to create a new user")]
@@ -35,13 +38,17 @@ namespace APITesting.Steps
         [Then(@"the call is successful")]
         public void ThenTheCallIsSuccessful()
         {
-
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            int statusCodeValue = (int)statusCode;
+            Assert.AreEqual(statusCodeValue, 201);
         }
 
         [Then(@"the user profile is created")]
-        public void ThenTheUserProfileIsCreated()
+        public async void ThenTheUserProfileIsCreated()
         {
-
+            var expectedString = "Ingrid";
+            string responseContent = await httpResponse.Content.ReadAsStringAsync();
+            Assert.IsTrue(responseContent.Contains(expectedString));
         }
     }
 }
