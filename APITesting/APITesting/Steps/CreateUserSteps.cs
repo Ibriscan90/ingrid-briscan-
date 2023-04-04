@@ -1,8 +1,6 @@
 ﻿using APITesting.Models;
-using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;

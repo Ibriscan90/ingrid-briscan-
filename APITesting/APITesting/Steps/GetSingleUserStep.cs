@@ -12,7 +12,6 @@ namespace APITesting.Steps
     public class GetSingleUserStep
     {
 
-        HttpClient httpClient;
         private static readonly string ENDPOINT = "https://reqres.in/api/users/2";
         private HttpResponseMessage httpResponse;
 

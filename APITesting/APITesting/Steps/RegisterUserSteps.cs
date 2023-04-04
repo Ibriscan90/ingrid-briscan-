@@ -1,5 +1,4 @@
 using APITesting.Models;
-using System;
 using System.Net.Http;
 using TechTalk.SpecFlow;
 using Newtonsoft.Json;

@@ -10,7 +10,6 @@ namespace APITesting.Steps
     [Binding]
     public class GetSingleUserStepsNotFound
     { 
-        HttpClient httpClient;
         private static readonly string ENDPOINT = "https://reqres.in/api/users/200";
         private HttpResponseMessage httpResponse;
 
