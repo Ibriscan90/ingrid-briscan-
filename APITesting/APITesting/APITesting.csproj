@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\CreateUser - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\GetSingleUser - Copy.feature.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\GetUsersList.feature.cs">
+      <DependentUpon>GetUsersList.feature</DependentUpon>
+    </Compile>
     <Compile Update="Features\GetSingleUser.feature.cs">
       <DependentUpon>GetSingleUser.feature</DependentUpon>
     </Compile>
@@ -29,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\GetUsersList.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\GetSingleUser.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
